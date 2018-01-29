@@ -7,16 +7,16 @@
 
 #include "my.h"
 
-char **create_tab(int sticks)
+char **create_tab(int sticks, int line)
 {
 	int	i = 0;
 	int	j = 0;
-	char	**tab = malloc(sizeof(char *) * (sticks + 2));
+	char	**tab = malloc(sizeof(char *) * (sticks + 3));
 
 	if (tab == NULL)
 		return (NULL);
-	while (j != 6) {
-		tab[j] = malloc(sizeof(char) * (sticks + 2));
+	while (j != (line + 2)) {
+		tab[j] = malloc(sizeof(char) * (sticks + 3));
 		while (i != (sticks + 2)) {
 			tab[j][i] = '*';
 			++i;
@@ -25,6 +25,7 @@ char **create_tab(int sticks)
 		++j;
 		i = 0;
 	}
+	tab[j] = '\0';
 	return (tab);
 }
 
@@ -43,7 +44,7 @@ int main(int ac, char *av[])
 		return (84);
 	line = my_getnbr(av[1]);
 	sticks = count_base(my_getnbr(av[1]));
-	map = create_tab(sticks);
+	map = create_tab(sticks, line);
 	if (map == NULL)
 		return (84);
 	play(map, sticks, line);

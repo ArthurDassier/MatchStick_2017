@@ -9,5 +9,7 @@
 #define MATCHSTICK_H_
 
 void play(char **tab, int nb, int line);
+void print_map(char **map);
+char **create_map(char **map, int sticks, int line);
 
 #endif
