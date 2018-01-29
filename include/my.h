@@ -7,10 +7,12 @@
 
 #ifndef MYLIB_H
 #define MYLIB_H
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include "matchstick.h"
 
 void my_putchar(char c);
 int my_isneg(int nb);

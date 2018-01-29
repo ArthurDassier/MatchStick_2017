@@ -6,6 +6,7 @@
 ##
 
 SRC	=	srcs/brain.c		\
+		srcs/fcts_while.c	\
 
 OBJ	=	$(SRC:.c = .o)
 
