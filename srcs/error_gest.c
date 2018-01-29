@@ -9,11 +9,10 @@
 
 int line_err_gest(char **map, int line)
 {
-	int i = 0;
+	int	i = 0;
 
-	while (map[i]) {
+	while (map[i])
 		++i;
-	}
 	if (line == 0 || line == i || line > i) {
 		my_printf("Error: this line is out of range\n");
 		return (-1);
@@ -25,6 +24,7 @@ int matches_err_gest(char **map, int matches, int line)
 {
 	int	i = 0;
 	int	sticks = 0;
+
 	if (matches == 0) {
 		my_printf("Error: you have to remove at least one match\n");
 		return (-1);

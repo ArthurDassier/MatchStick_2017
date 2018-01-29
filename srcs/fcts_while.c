@@ -42,8 +42,7 @@ void play(char **map, int sticks, int line)
 	map = create_map(map, sticks, line);
 	print_map(map);
 	while (1) {
-		if (j == 1) {
+		if (j == 1)
 			j = human_turn(map);
-		}
 	}
 }
