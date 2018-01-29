@@ -12,7 +12,7 @@ void print_map(char **map)
 	int	j = 0;
 
 	while (map[j]) {
-		printf("%s\n", map[j]);
+		my_printf("%s\n", map[j]);
 		++j;
 	}
 }

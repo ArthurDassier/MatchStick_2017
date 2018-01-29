@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include "get_next_line.h"
+#include "printf.h"
 #include "matchstick.h"
 
 void my_putchar(char c);

@@ -8,6 +8,8 @@
 SRC	=	srcs/brain.c		\
 		srcs/fcts_while.c	\
 		srcs/create_map.c	\
+		srcs/get_next_line.c	\
+		srcs/error_gest.c	\
 
 OBJ	=	$(SRC:.c = .o)
 
