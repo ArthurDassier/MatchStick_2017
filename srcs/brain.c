@@ -38,15 +38,16 @@ int main(int ac, char *av[])
 {
 	int	sticks;
 	int	line;
+	int	max;
 	char	**map;
 
-	if (ac < 2)
+	if (ac < 3 || ac > 3)
 		return (84);
 	line = my_getnbr(av[1]);
+	max = my_getnbr(av[1]);
 	sticks = count_base(my_getnbr(av[1]));
 	map = create_tab(sticks, line);
 	if (map == NULL)
 		return (84);
-	play(map, sticks, line);
-	return(0);
+	return (play(map, sticks, line, max));
 }

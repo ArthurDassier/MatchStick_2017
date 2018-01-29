@@ -9,9 +9,9 @@
 
 int line_err_gest(char **map, int line)
 {
-	int	i = 0;
+	int	i = 1;
 
-	while (map[i])
+	while (map[i][1] != '*')
 		++i;
 	if (line == 0 || line == i || line > i) {
 		my_printf("Error: this line is out of range\n");
@@ -20,11 +20,16 @@ int line_err_gest(char **map, int line)
 	return (0);
 }
 
-int matches_err_gest(char **map, int matches, int line)
+int matches_err_gest(char **map, int matches, int line, int max)
 {
 	int	i = 0;
 	int	sticks = 0;
 
+	if (max < matches) {
+		my_printf("Error: you cannot remove more ");
+		my_printf("than %d matches per turn\n", max);
+		return (-1);
+	}
 	if (matches == 0) {
 		my_printf("Error: you have to remove at least one match\n");
 		return (-1);
@@ -41,7 +46,7 @@ int matches_err_gest(char **map, int matches, int line)
 	return (0);
 }
 
-int error_gest(char **map, int *line, int *matches)
+int error_gest(char **map, int *line, int *matches, int max)
 {
 	*line = my_getnbr(get_next_line(0));
 	while (line_err_gest(map, *line) == -1) {
@@ -50,7 +55,7 @@ int error_gest(char **map, int *line, int *matches)
 	}
 	my_printf("Matches: ");
 	*matches = my_getnbr(get_next_line(0));
-	if (matches_err_gest(map, *matches, *line) == -1)
+	if (matches_err_gest(map, *matches, *line, max) == -1)
 		return (-1);
 	return (0);
 }

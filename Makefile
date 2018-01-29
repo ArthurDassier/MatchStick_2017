@@ -10,6 +10,7 @@ SRC	=	srcs/brain.c		\
 		srcs/create_map.c	\
 		srcs/get_next_line.c	\
 		srcs/error_gest.c	\
+		srcs/win_n_def.c	\
 
 OBJ	=	$(SRC:.c = .o)
 
