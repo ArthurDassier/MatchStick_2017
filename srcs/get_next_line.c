@@ -15,6 +15,7 @@ char *fill_str2(char *str, char *buffer, int fd)
 
 	for (i = 0; buffer[i] != '\n' && buffer[i]; ++i) {
 		str[j] = buffer[i];
+		str[j + 1] = '\0';
 		str = my_realloc(str);
 		++j;
 	}
