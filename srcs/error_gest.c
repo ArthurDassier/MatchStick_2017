@@ -46,7 +46,7 @@ int matches_err_gest(char **map, int matches, int line, int max)
 	return (0);
 }
 
-int error_gest(char **map, int *line, int *matches, int max)
+int error_gest(char **map, int *line, int *mats, int max)
 {
 	*line = my_getnbr(get_next_line(0));
 	while (line_err_gest(map, *line) == -1) {
@@ -54,8 +54,9 @@ int error_gest(char **map, int *line, int *matches, int max)
 		*line = my_getnbr(get_next_line(0));
 	}
 	my_printf("Matches: ");
-	*matches = my_getnbr(get_next_line(0));
-	if (matches_err_gest(map, *matches, *line, max) == -1)
+	*mats = my_getnbr(get_next_line(0));
+	if (matches_err_gest(map, *mats, *line, max) == -1)
 		return (-1);
+	my_printf("Player removed %d match(es) from line %d\n", *line, *mats);
 	return (0);
 }
