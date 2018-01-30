@@ -41,13 +41,20 @@ int play(char **map, int sticks, int line, int max)
 
 	map = create_map(map, sticks, line);
 	print_map(map);
-	while (1) {
+	while (j == 1) {
+		j = human_turn(map, max);
+		j = check_loose(map);
 		if (j == 1) {
-			j = human_turn(map, max);
-			j = check_loose(map);
-		} else
-			break;
+			j = robot_turn(map, max, line);
+			j = check_rb_loose(map);
+		}
 	}
-	my_printf("I lost... snif... but I'll get you next time!!\n");
-	return (0);
+	if (j == 2) {
+		my_printf("I lost... snif... but I'll get you next time!!\n");
+		return (2);
+	}
+	if (j == 0) {
+		my_printf("You lost, RETARD...\n");
+		return (1);
+	}
 }

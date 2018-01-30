@@ -57,6 +57,6 @@ int error_gest(char **map, int *line, int *mats, int max)
 	*mats = my_getnbr(get_next_line(0));
 	if (matches_err_gest(map, *mats, *line, max) == -1)
 		return (-1);
-	my_printf("Player removed %d match(es) from line %d\n", *line, *mats);
+	my_printf("Player removed %d match(es) from line %d\n", *mats, *line);
 	return (0);
 }
