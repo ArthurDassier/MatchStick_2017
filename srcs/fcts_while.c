@@ -45,7 +45,7 @@ int play(char **map, int sticks, int line, int max)
 		j = human_turn(map, max);
 		j = check_loose(map);
 		if (j == 1) {
-			j = robot_turn(map, max, line);
+			j = robot_turn(map, max);
 			j = check_rb_loose(map);
 		}
 	}
@@ -54,7 +54,7 @@ int play(char **map, int sticks, int line, int max)
 		return (2);
 	}
 	if (j == 0) {
-		my_printf("You lost, RETARD...\n");
+		my_printf("You lost, too bad...\n");
 		return (1);
 	}
 }

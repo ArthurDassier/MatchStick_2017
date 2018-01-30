@@ -16,7 +16,9 @@ int matches_err_gest(char **map, int matches, int line, int max);
 int error_gest(char **map, int *line, int *matches, int max);
 int check_loose(char **map);
 int check_rb_loose(char **map);
-int robot_turn(char **map, int max, int line);
+int robot_turn(char **map, int max);
 char **modif_map(char **map, int line, int matches);
+void ppi(int *mariebd, char **map, int max);
+void algo(int *mariebd, char **map, char *str, int max);
 
 #endif
