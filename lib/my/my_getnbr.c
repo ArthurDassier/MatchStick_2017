@@ -14,13 +14,10 @@ int my_getnbr(char *str)
 	int	isneg = 1;
 	int	i = 0;
 
-	if (str == NULL || str[0] == '-')
+	if (str == NULL)
 		return (-1);
-	if (str[i] == '+' || str[i] == '-') {
-		if (str[i] == '-')
-			isneg = isneg * -1;
-		i = i + 1;
-	}
+	if (str[0] == '-' || str[0] < '0' || str[0] > '9')
+		return (-2);
 	while (str[i] != '\0' && nb < 2147483647) {
 		if (str[i] >= '0' && str[i] <= '9') {
 			nb = nb * 10;

@@ -17,13 +17,36 @@ int line_err_gest(char **map, int line)
 		my_printf("Error: this line is out of range\n");
 		return (-1);
 	}
+	if (line == -2) {
+		my_printf("Error: invalid input (positive number expected)\n");
+		return (-1);
+	}
+	return (0);
+}
+
+int matches_err_gest_part2(char **map, int matches, int line)
+{
+	int	i = 0;
+	int	sticks = 0;
+
+	while (map[line][i]) {
+		if (map[line][i] == '|')
+		++sticks;
+		++i;
+	}
+	if (matches == -2) {
+		my_printf("Error: invalid input (positive number expected)\n");
+		return (-1);
+	}
+	if (sticks < matches) {
+		my_printf("Error: not enough matches on this line\n");
+		return (-1);
+	}
 	return (0);
 }
 
 int matches_err_gest(char **map, int matches, int line, int max)
 {
-	int	i = 0;
-	int	sticks = 0;
 
 	if (max < matches) {
 		my_printf("Error: you cannot remove more ");
@@ -34,16 +57,7 @@ int matches_err_gest(char **map, int matches, int line, int max)
 		my_printf("Error: you have to remove at least one match\n");
 		return (-1);
 	}
-	while (map[line][i]) {
-		if (map[line][i] == '|')
-			++sticks;
-		++i;
-	}
-	if (sticks < matches) {
-		my_printf("Error: not enough matches on this line\n");
-		return (-1);
-	}
-	return (0);
+	return (matches_err_gest_part2(map, matches, line));
 }
 
 int error_gest(char **map, int *line, int *mats, int max)
