@@ -18,7 +18,8 @@ int check_loose(char **map);
 int check_rb_loose(char **map);
 int robot_turn(char **map, int max);
 char **modif_map(char **map, int line, int matches);
-void ppi(int *mariebd, char **map, int max);
-void algo(int *mariebd, char **map, char *str, int max);
+void params_create(int *mariebd, char **map, int max);
+int bin_conv(int nb);
+char *nbr_to_str(int nb);
 
 #endif

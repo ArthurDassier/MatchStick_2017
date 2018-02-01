@@ -13,6 +13,7 @@ SRC	=	srcs/brain.c		\
 		srcs/win_n_def.c	\
 		srcs/robot.c		\
 		srcs/algo.c		\
+		srcs/bin_conv.c		\
 
 OBJ	=	$(SRC:.c = .o)
 

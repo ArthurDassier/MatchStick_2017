@@ -7,66 +7,51 @@
 
 #include "my.h"
 
-void find_del_p(int *mariebd, char **map, int max)
+void algo(char **map, int *mariebd, int *bin, int somme)
 {
 	int	i = 0;
 	int	j = 0;
-
-	while (mariebd[i] >= 0) {
-		if (mariebd[i] > mariebd[j])
-			j = i;
-		++i;
-	}
-	while (max > mariebd[j])
-		--max;
-	map = modif_map(map, j, max);
-	my_printf("AI removed %d match(es) from line %d\n", max, j);
-}
-
-void find_del_i(int *mariebd, char **map, char *str, int max)
-{
-	int	i = 0;
-	int	j = 0;
-
-	while (mariebd[i] >= 0) {
-		if (mariebd[i] > mariebd[j] && str[i] == 'i')
-			j = i;
-		++i;
-	}
-	while (max > mariebd[j])
-		--max;
-	map = modif_map(map, j, max);
-	my_printf("AI removed %d match(es) from line %d\n", max, j);
-}
-
-void ppi(int *mariebd, char **map, int max)
-{
-	int	i = 1;
-	char	*str = malloc(sizeof(char) * my_strlen(map[0]));
-
-	while (mariebd[i] >= 0) {
-		if (mariebd[i] % 2 == 0 || mariebd[i] == 0) {
-			str[i] = 'i';
-		} else
-			str[i] = 'p';
-		++i;
-	}
-	str[i] = '\0';
-	algo(mariebd, map, str, max);
-}
-
-void algo(int *mariebd, char **map, char *str, int max)
-{
 	int	count = 0;
-	int	i = 0;
+	int	alum = 0;
+	char	*str = nbr_to_str(somme);
+	int	save = bin[j];
 
-	while (str[count] != '\0') {
-		if (str[count] == 'i')
-			++i;
-		++count;
+	while (my_getnbr(nbr_to_str(somme)) != 0) {
+		++alum;
+		if (mariebd[j] - alum < 0) {
+			bin[j] = save;
+			++j;
+			save = bin[j];
+			alum = 1;
+		}
+		somme = 0;
+		bin[j] = bin_conv(mariebd[j] - alum);
+		while (bin[count] != -1) {
+			somme = somme + bin[count];
+			++count;
+		}
+		count = 0;
 	}
-	if (i == 0) {
-		find_del_p(mariebd, map, max);
-	} else
-		find_del_i(mariebd, map, str, max);
+	map = modif_map(map, j+1, alum);
+	my_printf("AI removed %d match(es) from line %d\n", alum, j+1);
+}
+
+void params_create(int *mariebd, char **map, int max)
+{
+	int	i = 0;
+	int	somme = 0;
+	int	*bin = malloc(sizeof(int *) * my_strlen(map[0]));
+	char	*str;
+
+	while (mariebd[i] >= 0) {
+		bin[i] = bin_conv(mariebd[i]);
+		++i;
+	}
+	bin[i] = -1;
+	i = 0;
+	while (bin[i] != -1) {
+		somme = somme + bin[i];
+		++i;
+	}
+	algo(map, mariebd, bin, somme);
 }

@@ -53,10 +53,7 @@ int my_printf(char const *str, ...)
 		else {
 			i++;
 			j = str_parser(str[i]);
-			if (j == 84)
-				my_error(str[i]);
-			else
-				PointeursurFonction[j](ap);
+			PointeursurFonction[j](ap);
 		}
 	}
 	va_end(ap);

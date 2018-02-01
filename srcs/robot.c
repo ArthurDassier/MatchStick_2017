@@ -20,24 +20,10 @@ int count_st(char *map)
 	return (sticks);
 }
 
-int modif_map_r(char **map, int line, int matches)
-{
-	int	i = my_strlen(map[line]) - 1;
-
-	while (map[line][i] && matches != 0) {
-		if (map[line][i] == '|') {
-			map[line][i] = ' ';
-			--matches;
-		}
-		--i;
-	}
-	return (1);
-}
-
 void ai(char **map, int max)
 {
 	int	*mariebd = malloc(sizeof(int *) * my_strlen(map[0]));
-	int	i = 0;
+	int	i = 1;
 	int	j = 0;
 
 	while (map[i]) {
@@ -46,7 +32,7 @@ void ai(char **map, int max)
 		++j;
 	}
 	mariebd[i] = -1;
-	ppi(mariebd, map, max);
+	params_create(mariebd, map, max);
 }
 
 int robot_turn(char **map, int max)
