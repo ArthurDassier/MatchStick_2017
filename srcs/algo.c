@@ -7,15 +7,30 @@
 
 #include "my.h"
 
+int all(int *mariebd)
+{
+	int	somme_dec = 0;
+	int	i = 0;
+
+	while (mariebd[i] >= 0) {
+		somme_dec = somme_dec + mariebd[i];
+		++i;
+	}
+	return (somme_dec);
+}
+
 void algo(char **map, int *mariebd, int *bin, int somme)
 {
 	int	j = 0;
 	int	count = 0;
 	int	alum = 0;
+	int	check = 0;
 	char	*str = nbr_to_str(somme);
 	int	save = bin[j];
 
-	while (my_getnbr(nbr_to_str(somme)) != 0) {
+	if (my_getnbr(nbr_to_str(somme)) == 0 && all(mariebd) != 1)
+		check = 1;
+	while (my_getnbr(nbr_to_str(somme)) != check) {
 		++alum;
 		if (mariebd[j] - alum < 0) {
 			bin[j] = save;
