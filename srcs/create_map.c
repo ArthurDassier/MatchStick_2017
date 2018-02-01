@@ -19,9 +19,9 @@ void print_map(char **map)
 
 char **place_sticks(char **map, int i, int nb_st)
 {
-	int sticks = my_strlen(map[i]) - 2;
-	int count = 0;
-	int j;
+	int	sticks = my_strlen(map[i]) - 2;
+	int	count = 0;
+	int	j = 0;
 
 	if (sticks % 2 != 0)
 		++sticks;

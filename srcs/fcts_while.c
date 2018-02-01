@@ -25,11 +25,14 @@ int human_turn(char **map, int max)
 {
 	int	line;
 	int	matches;
+	int	eof;
 
 	my_printf("\nYour turn:\n");
 	my_printf("Line: ");
-	while (error_gest(map, &line, &matches, max) == -1)
+	while ((eof = error_gest(map, &line, &matches, max)) == -1)
 		my_printf("Line: ");
+	if (eof == 84)
+		return (84);
 	map = modif_map(map, line, matches);
 	print_map(map);
 	return (1);
@@ -42,7 +45,8 @@ int play(char **map, int sticks, int line, int max)
 	map = create_map(map, sticks, line);
 	print_map(map);
 	while (j == 1) {
-		j = human_turn(map, max);
+		if ((j = human_turn(map, max)) == 84)
+			return (0);
 		j = check_loose(map);
 		if (j == 1) {
 			j = robot_turn(map, max);
