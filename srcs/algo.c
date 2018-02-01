@@ -9,7 +9,6 @@
 
 void algo(char **map, int *mariebd, int *bin, int somme)
 {
-	int	i = 0;
 	int	j = 0;
 	int	count = 0;
 	int	alum = 0;
@@ -41,7 +40,6 @@ void params_create(int *mariebd, char **map, int max)
 	int	i = 0;
 	int	somme = 0;
 	int	*bin = malloc(sizeof(int *) * my_strlen(map[0]));
-	char	*str;
 
 	while (mariebd[i] >= 0) {
 		bin[i] = bin_conv(mariebd[i]);
