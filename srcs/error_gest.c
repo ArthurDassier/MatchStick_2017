@@ -48,15 +48,15 @@ int matches_err_gest(char **map, int matches, int line, int max)
 
 int error_gest(char **map, int *line, int *mats, int max)
 {
-	if ((*line = my_getnbr(get_next_line(0))) == 0)
+	if ((*line = my_getnbr(get_next_line(0))) == -1)
 		return (84);
 	while (line_err_gest(map, *line) == -1) {
 		my_printf("Line: ");
-		if ((*line = my_getnbr(get_next_line(0))) == 0)
+		if ((*line = my_getnbr(get_next_line(0))) == -1)
 			return (84);
 	}
 	my_printf("Matches: ");
-	if ((*mats = my_getnbr(get_next_line(0))) == 0)
+	if ((*mats = my_getnbr(get_next_line(0))) == -1)
 		return (84);
 	if (matches_err_gest(map, *mats, *line, max) == -1)
 		return (-1);

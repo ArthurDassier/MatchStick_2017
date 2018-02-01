@@ -15,7 +15,7 @@ int my_getnbr(char *str)
 	int	i = 0;
 
 	if (str == NULL || str[0] == '-')
-		return (0);
+		return (-1);
 	if (str[i] == '+' || str[i] == '-') {
 		if (str[i] == '-')
 			isneg = isneg * -1;
