@@ -46,7 +46,7 @@ int main(int ac, char *av[])
 	line = my_getnbr(av[1]);
 	max = my_getnbr(av[2]);
 	sticks = count_base(my_getnbr(av[1]));
-	if (line <= 0 || max <= 0 || line > 100)
+	if (line < 2 || max <= 0 || line > 99)
 		return (84);
 	map = create_tab(sticks, line);
 	if (map == NULL)
