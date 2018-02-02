@@ -34,22 +34,31 @@ int count_base(int sticks)
 	return (sticks * 2 - 1);
 }
 
-int main(int ac, char *av[])
+int game(char *av[])
 {
 	int	sticks;
 	int	line;
 	int	max;
 	char	**map;
 
-	if (ac < 3 || ac > 3)
-		return (84);
 	line = my_getnbr(av[1]);
 	max = my_getnbr(av[2]);
 	sticks = count_base(my_getnbr(av[1]));
-	if (line < 2 || max <= 0 || line > 99)
+	if (line < 2 || max <= 0 || line > 99) {
+		my_puterror("2 < line < 99 / max > 0\n");
 		return (84);
+	}
 	map = create_tab(sticks, line);
 	if (map == NULL)
 		return (84);
 	return (play(map, sticks, line, max));
+}
+
+int main(int ac, char *av[])
+{
+	if (ac < 3 || ac > 3) {
+		my_puterror("You have to give 2 arguments\n");
+		return (84);
+	}
+	return (game(av));
 }

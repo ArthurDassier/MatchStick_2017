@@ -26,10 +26,10 @@ void params_create(int *mariebd, char **map, int max)
 	int	i = 0;
 
 	while (calc(mariebd) != 0) {
+		if (i == 0 && alum == 0)
+		save = mariebd[i];
 		--mariebd[i];
 		++alum;
-		if (i == 0 && alum == 0)
-			save = mariebd[i];
 		if (mariebd[i] < 0) {
 			mariebd[i] = save;
 			save = mariebd[i + 1];
