@@ -16,7 +16,6 @@ int calc(int *mariebd)
 		somme = somme ^ mariebd[i];
 		++i;
 	}
-	printf("%d\n", somme);
 	return (somme);
 }
 
