@@ -7,64 +7,37 @@
 
 #include "my.h"
 
-int all(int *mariebd)
+int calc(int *mariebd)
 {
-	int	somme_dec = 0;
+	int	somme = 0;
 	int	i = 0;
 
-	while (mariebd[i] >= 0) {
-		somme_dec = somme_dec + mariebd[i];
+	while (mariebd[i] != -1) {
+		somme = somme ^ mariebd[i];
 		++i;
 	}
-	return (somme_dec);
-}
-
-void algo(char **map, int *mariebd, int *bin, int somme)
-{
-	int	j = 0;
-	int	count = 0;
-	int	alum = 0;
-	int	check = 0;
-	char	*str = nbr_to_str(somme);
-	int	save = bin[j];
-
-	if (my_getnbr(nbr_to_str(somme)) == 0 && all(mariebd) != 1)
-		check = 1;
-	while (my_getnbr(nbr_to_str(somme)) != check) {
-		++alum;
-		if (mariebd[j] - alum < 0) {
-			bin[j] = save;
-			++j;
-			save = bin[j];
-			alum = 1;
-		}
-		somme = 0;
-		bin[j] = bin_conv(mariebd[j] - alum);
-		while (bin[count] != -1) {
-			somme = somme + bin[count];
-			++count;
-		}
-		count = 0;
-	}
-	map = modif_map(map, j+1, alum);
-	my_printf("AI removed %d match(es) from line %d\n", alum, j+1);
+	printf("%d\n", somme);
+	return (somme);
 }
 
 void params_create(int *mariebd, char **map, int max)
 {
+	int	alum = 0;
+	int	save = 0;
 	int	i = 0;
-	int	somme = 0;
-	int	*bin = malloc(sizeof(int *) * my_strlen(map[0]));
 
-	while (mariebd[i] >= 0) {
-		bin[i] = bin_conv(mariebd[i]);
-		++i;
+	while (calc(mariebd) != 0) {
+		--mariebd[i];
+		++alum;
+		if (i == 0 && alum == 0)
+			save = mariebd[i];
+		if (mariebd[i] < 0) {
+			mariebd[i] = save;
+			save = mariebd[i + 1];
+			alum = 0;
+			++i;
+		}
 	}
-	bin[i] = -1;
-	i = 0;
-	while (bin[i] != -1) {
-		somme = somme + bin[i];
-		++i;
-	}
-	algo(map, mariebd, bin, somme);
+	map = modif_map(map, i + 1, alum);
+	my_printf("AI removed %d match(es) from line %d\n", alum, i + 1);
 }

@@ -13,7 +13,6 @@ SRC	=	srcs/brain.c		\
 		srcs/win_n_def.c	\
 		srcs/robot.c		\
 		srcs/algo.c		\
-		srcs/bin_conv.c		\
 
 OBJ	=	$(SRC:.c = .o)
 
@@ -23,7 +22,7 @@ LIB_DIR	=	./lib
 
 MY.H_DIR	=	./include
 
-CC	=	gcc
+CC	=	gcc -g3
 
 C_FLAGS	=	-Wall -Wextra
 

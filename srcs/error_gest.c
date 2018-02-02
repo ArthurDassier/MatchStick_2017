@@ -47,7 +47,6 @@ int matches_err_gest_part2(char **map, int matches, int line)
 
 int matches_err_gest(char **map, int matches, int line, int max)
 {
-
 	if (max < matches) {
 		my_printf("Error: you cannot remove more ");
 		my_printf("than %d matches per turn\n", max);
