@@ -55,11 +55,11 @@ int play(char **map, int sticks, int line, int max)
 	}
 	if (j == 2) {
 		my_printf("I lost... snif... but I'll get you next time!!\n");
-		return (2);
+		return (1);
 	}
 	if (j == 0) {
 		my_printf("You lost, too bad...\n");
-		return (1);
+		return (2);
 	}
 	return (0);
 }
