@@ -61,4 +61,5 @@ int play(char **map, int sticks, int line, int max)
 		my_printf("You lost, too bad...\n");
 		return (1);
 	}
+	return (0);
 }

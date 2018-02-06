@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <stdio.h>
 
+int my_strlen(char const *str);
+
 int my_getnbr(char *str)
 {
 	int	nb = 0;
@@ -18,7 +20,9 @@ int my_getnbr(char *str)
 		return (-1);
 	if (str[0] == '-' || str[0] < '0' || str[0] > '9')
 		return (-2);
-	while (str[i] != '\0' && nb < 2147483647) {
+	if (my_strlen(str) > 3)
+		return (0);
+	while (str[i] != '\0') {
 		if (str[i] >= '0' && str[i] <= '9') {
 			nb = nb * 10;
 			nb = nb + str[i] - '0';

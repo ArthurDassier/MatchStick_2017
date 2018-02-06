@@ -31,10 +31,6 @@ int calc_dec(int *mariebd)
 		if (mariebd[i] > 0)
 			++checker;
 	}
-	if ((checker == 1 && somme > 1) || (checker == 2 && somme == 2))
-		return (2);
-	if (checker == 3 && somme == 4)
-		return (3);
 	return (somme);
 }
 
@@ -43,13 +39,8 @@ void params_create(int *mariebd, char **map, int max)
 	int	alum = 0;
 	int	save = 0;
 	int	i = 0;
-	int	check = 0;
 
-	if (calc_dec(mariebd) == 2)
-		check = 1;
-	if (calc_dec(mariebd) == 3)
-		check = 2;
-	while (calc(mariebd) != check) {
+	while (calc(mariebd) != 0) {
 		if (i == 0 && alum == 0)
 		save = mariebd[i];
 		--mariebd[i];
