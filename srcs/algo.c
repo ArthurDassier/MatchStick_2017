@@ -7,6 +7,12 @@
 
 #include "my.h"
 
+int last_mv(int *mariebd)
+{
+	if (calc_line(mariebd) == 2 && calc_one(mariebd) == 2)
+		return (1);
+	return (0);
+}
 
 void the_while(int *mariebd, char **map, int max, int check)
 {
@@ -26,6 +32,8 @@ void the_while(int *mariebd, char **map, int max, int check)
 			++i;
 		}
 	}
+	if (last_mv(mariebd) == 1)
+		++alum;
 	map = modif_map(map, i + 1, alum);
 	my_printf("AI removed %d match(es) from line %d\n", alum, i + 1);
 }

@@ -11,28 +11,36 @@ int calc(int *mariebd)
 {
 	int	somme = 0;
 	int	i = 0;
-	int	j = 0;
 
 	while (mariebd[i] != -1) {
 		somme = somme ^ mariebd[i];
 		++i;
-		if (mariebd[i] > 0)
-			++j;
 	}
 	return (somme);
+}
+
+int calc_one(int *mariebd)
+{
+	int	checker = 0;
+	int	i = 0;
+
+	while (mariebd[i] != -1) {
+		if (mariebd[i] == 1)
+			++checker;
+		++i;
+	}
+	return (checker);
 }
 
 int calc_line(int *mariebd)
 {
 	int	checker = 0;
-	int	somme = 0;
 	int	i = 0;
 
 	while (mariebd[i] != -1) {
-		somme = somme + mariebd[i];
-		++i;
 		if (mariebd[i] > 0)
 			++checker;
+		++i;
 	}
 	return (checker);
 }
@@ -40,14 +48,12 @@ int calc_line(int *mariebd)
 int calc_line_sup(int *mariebd)
 {
 	int	checker = 0;
-	int	somme = 0;
 	int	i = 0;
 
 	while (mariebd[i] != -1) {
-		somme = somme + mariebd[i];
-		++i;
 		if (mariebd[i] > 1)
 			++checker;
+		++i;
 	}
 	return (checker);
 }

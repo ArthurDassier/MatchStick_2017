@@ -22,6 +22,7 @@ void params_create(int *mariebd, char **map, int max);
 int bin_conv(int nb);
 char *nbr_to_str(int nb);
 int calc(int *mariebd);
+int calc_one(int *mariebd);
 int calc_dec(int *mariebd);
 int calc_line(int *mariebd);
 int calc_line_sup(int *mariebd);
