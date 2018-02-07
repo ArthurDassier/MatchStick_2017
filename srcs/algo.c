@@ -9,17 +9,33 @@
 
 int last_mv(int *mariebd, int *i)
 {
-	int	j = 0;
+	static int	done = 0;
 
-	if (calc_line(mariebd) == 2 && calc_one(mariebd) == 2)
-		return (1);
+	if (calc_line(mariebd) == 2 && calc_one(mariebd) == 2 && done == 0) {
+		++done;
+		return (-1);
+	}
+	if (calc_line(mariebd) == 2 && calc_one(mariebd) == 2 && done == 1) {
+		for (int j = 0; mariebd[j] == 0; ++j)
+			*i = j;
+		return (-42);
+	}
 	if (calc_line(mariebd) == 1 && calc_one(mariebd) == 1 && *i == 0) {
-		while (mariebd[j] == 0)
-			++j;
-		*i = j;
+		for (int j = 0; mariebd[j] == 0; ++j)
+			*i = j;
 		return (1);
 	}
+	if (calc_line(mariebd) == 4 && calc_one(mariebd) == 4)
+		return (1);
 	return (0);
+}
+
+void final(char **map, int alum, int i)
+{
+	if (alum < 0)
+		alum = 1;
+	map = modif_map(map, i + 1, alum);
+	my_printf("AI removed %d match(es) from line %d\n", alum, i + 1);
 }
 
 void the_while(int *mariebd, char **map, int max, int check)
@@ -40,10 +56,8 @@ void the_while(int *mariebd, char **map, int max, int check)
 			++i;
 		}
 	}
-	if (last_mv(mariebd, &i) == 1)
-		++alum;
-	map = modif_map(map, i + 1, alum);
-	my_printf("AI removed %d match(es) from line %d\n", alum, i + 1);
+	alum = alum + last_mv(mariebd, &i);
+	final(map, alum, i);
 }
 
 void params_create(int *mariebd, char **map, int max)
