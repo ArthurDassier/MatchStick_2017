@@ -13,7 +13,7 @@ int last_mv(int *mariebd, int *i)
 
 	if (calc_line(mariebd) == 2 && calc_one(mariebd) == 2)
 		return (1);
-	if (calc_line(mariebd) == 1 && calc_one(mariebd) == 1) {
+	if (calc_line(mariebd) == 1 && calc_one(mariebd) == 1 && *i == 0) {
 		while (mariebd[j] == 0)
 			++j;
 		*i = j;
