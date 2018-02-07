@@ -7,10 +7,18 @@
 
 #include "my.h"
 
-int last_mv(int *mariebd)
+int last_mv(int *mariebd, int *i)
 {
+	int	j = 0;
+
 	if (calc_line(mariebd) == 2 && calc_one(mariebd) == 2)
 		return (1);
+	if (calc_line(mariebd) == 1 && calc_one(mariebd) == 1) {
+		while (mariebd[j] == 0)
+			++j;
+		*i = j;
+		return (1);
+	}
 	return (0);
 }
 
@@ -32,7 +40,7 @@ void the_while(int *mariebd, char **map, int max, int check)
 			++i;
 		}
 	}
-	if (last_mv(mariebd) == 1)
+	if (last_mv(mariebd, &i) == 1)
 		++alum;
 	map = modif_map(map, i + 1, alum);
 	my_printf("AI removed %d match(es) from line %d\n", alum, i + 1);
