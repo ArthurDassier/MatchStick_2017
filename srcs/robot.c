@@ -22,7 +22,7 @@ int count_st(char *map)
 
 void ai(char **map, int max)
 {
-	int	*mariebd = malloc(sizeof(int *) * my_strlen(map[0]));
+	int	*mariebd = malloc(sizeof(int) * my_strlen(map[0]));
 	int	i = 1;
 	int	j = 0;
 
@@ -31,7 +31,7 @@ void ai(char **map, int max)
 		++i;
 		++j;
 	}
-	mariebd[i] = -2;
+	mariebd[j] = E_O_ARRAY;
 	params_create(mariebd, map, max);
 }
 

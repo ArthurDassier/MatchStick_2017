@@ -7,6 +7,7 @@
 
 #ifndef MATCHSTICK_H_
 #define MATCHSTICK_H_
+#define E_O_ARRAY -2
 
 int play(char **tab, int nb, int line, int max);
 void print_map(char **map);

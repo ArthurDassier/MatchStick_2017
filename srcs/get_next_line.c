@@ -8,7 +8,7 @@
 #include "../include/get_next_line.h"
 
 
-char *get_next_line (int fd)
+char *get_next_line(int fd)
 {
 	int	check = 1;
 	char	*str = malloc(sizeof(char) * 1024);

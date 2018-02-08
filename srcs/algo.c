@@ -65,4 +65,5 @@ void params_create(int *mariebd, char **map, int max)
 	int	check = 0;
 
 	the_while(mariebd, map, max, check);
+	free(mariebd);
 }

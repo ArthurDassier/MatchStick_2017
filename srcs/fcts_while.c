@@ -38,8 +38,22 @@ int human_turn(char **map, int max)
 	return (1);
 }
 
+int the_end(int j)
+{
+	if (j == 2) {
+		my_printf("I lost... snif... but I'll get you next time!!\n");
+		return (1);
+	}
+	if (j == 0) {
+		my_printf("You lost, too bad...\n");
+		return (2);
+	}
+	return (0);
+}
+
 int play(char **map, int sticks, int line, int max)
 {
+	int	i = 0;
 	int	j = 1;
 
 	map = create_map(map, sticks, line);
@@ -53,13 +67,10 @@ int play(char **map, int sticks, int line, int max)
 			j = check_rb_loose(map);
 		}
 	}
-	if (j == 2) {
-		my_printf("I lost... snif... but I'll get you next time!!\n");
-		return (1);
+	while (map[i]) {
+		free(map[i]);
+		++i;
 	}
-	if (j == 0) {
-		my_printf("You lost, too bad...\n");
-		return (2);
-	}
-	return (0);
+	free(map);
+	return (the_end(j));
 }
