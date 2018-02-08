@@ -46,10 +46,10 @@ void the_while(int *mariebd, char **map, int max, int check)
 
 	while (calc(mariebd) != check && calc_dec(mariebd) != 1) {
 		if (i == 0 && alum == 0)
-		save = mariebd[i];
+			save = mariebd[i];
 		--mariebd[i];
 		++alum;
-		if (mariebd[i] < 0) {
+		if (mariebd[i] == -1) {
 			mariebd[i] = save;
 			save = mariebd[i + 1];
 			alum = 0;

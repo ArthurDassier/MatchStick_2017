@@ -31,7 +31,7 @@ void ai(char **map, int max)
 		++i;
 		++j;
 	}
-	mariebd[i] = -1;
+	mariebd[i] = -2;
 	params_create(mariebd, map, max);
 }
 
