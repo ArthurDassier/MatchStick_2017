@@ -7,32 +7,36 @@
 
 #include "my.h"
 
-int count_st(char *map)
+void final(char **map, int i)
 {
-	int	i = 1;
-	int	sticks = 0;
+	map = modif_map(map, i, 1);
+	my_printf("AI removed 1 match(es) from line %d\n", i);
+}
 
-	while (map[i] != '*') {
-		if (map[i] == '|')
-			++sticks;
+int test_map(char *map, char **big_map, int j)
+{
+	int	i = 0;
+
+	while (map[i] != '\0') {
+		if (map[i] == '|') {
+			final(big_map, j);
+			return (1);
+		}
 		++i;
 	}
-	return (sticks);
+	return (0);
 }
 
 void ai(char **map, int max)
 {
-	int	*mariebd = malloc(sizeof(int) * my_strlen(map[0]));
-	int	i = 1;
-	int	j = 0;
+	int	i = 0;
 
+	(void) max;
 	while (map[i]) {
-		mariebd[j] = count_st(map[i]);
+		if (test_map(map[i], map, i) == 1)
+			return;
 		++i;
-		++j;
 	}
-	mariebd[j] = E_O_ARRAY;
-	params_create(mariebd, map, max);
 }
 
 int robot_turn(char **map, int max)
