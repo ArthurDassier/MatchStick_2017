@@ -20,8 +20,6 @@ int my_getnbr(char *str)
 		return (-1);
 	if (str[0] == '-' || str[0] < '0' || str[0] > '9')
 		return (-2);
-	if (my_strlen(str) > 3)
-		return (0);
 	while (str[i] != '\0') {
 		if (str[i] >= '0' && str[i] <= '9') {
 			nb = nb * 10;

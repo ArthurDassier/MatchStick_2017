@@ -57,7 +57,7 @@ int game(char *av[])
 int main(int ac, char *av[])
 {
 	if (ac < 3 || ac > 3) {
-		my_puterror("You have to give 2 arguments\n");
+		my_puterror("You must give 2 arguments\n");
 		return (84);
 	}
 	return (game(av));
