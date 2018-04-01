@@ -42,7 +42,7 @@ int game(char *av[])
 	char	**map;
 
 	line = my_getnbr(av[1]);
-	max = my_getnbr(av[2]);
+	max = my_getnbr_main(av[2]);
 	sticks = count_base(my_getnbr(av[1]));
 	if (line < 2 || max <= 0 || line > 99) {
 		my_puterror("2 < line < 99 / max > 0\n");
